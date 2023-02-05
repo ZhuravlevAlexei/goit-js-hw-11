@@ -8,7 +8,7 @@ let lightbox;
 const galleryDiv = document.querySelector('.gallery');
 export const loadMoreBtn = document.querySelector('.load-more');
 
-let paginationPerPage = 40;
+const paginationPerPage = 40;
 
 export async function getPhotosByAxios(searchString, page = 1) {
   const URL_KEY = 'https://pixabay.com/api/';
@@ -23,7 +23,6 @@ export function createGallery(respData, curPagPage) {
   const data = respData.hits;
   const pagesQty = Math.ceil(respData.totalHits / paginationPerPage);
 
-  //   console.log(respData);
   const galleryMarkup = data
     .map(
       (
