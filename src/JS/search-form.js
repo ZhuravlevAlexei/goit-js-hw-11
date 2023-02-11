@@ -25,7 +25,7 @@ let options = {
   threshold: 0,
 };
 
-export let observer = new IntersectionObserver(onScroll, options);
+let observer = new IntersectionObserver(onScroll, options);
 
 function onScroll(entries, observer) {
   entries.forEach(entry => {
@@ -79,6 +79,7 @@ function onLoadMore(evt) {
         Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
+        observer.unobserve(guard);
       } else {
         // console.log(curPaginationPage);
         createGallery(resp.data, curPaginationPage);
